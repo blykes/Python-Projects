@@ -18,3 +18,14 @@ def make_shirt(shirt_size, shirt_print):
 
 make_shirt('M', 'WELCOME HOME VEN!')
 make_shirt(shirt_size='M', shirt_print='I MISSED YOU!')
+
+#8-4 Large Shirts
+def make_shirt(shirt_size='large', shirt_print='I love Python'):
+    print("My sirt size is " + shirt_size + ".")
+    print("The shirt should say " + shirt_print + ".")
+
+#make_shirt('M', 'WELCOME HOME VEN!')
+make_shirt()
+make_shirt(shirt_size='Medium')
+make_shirt(shirt_size='Small')
+make_shirt(shirt_size='XS', shirt_print='Word')

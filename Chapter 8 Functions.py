@@ -29,3 +29,13 @@ make_shirt()
 make_shirt(shirt_size='Medium')
 make_shirt(shirt_size='Small')
 make_shirt(shirt_size='XS', shirt_print='Word')
+
+#8-5 Cities
+def describe_city(city, country='France'):
+    """Describe a city."""
+    msg = city.title() + " is in " + country.title() + "."
+    print(msg)
+
+describe_city('Paris')
+describe_city('reykjavik', 'iceland')
+describe_city('Cannes')

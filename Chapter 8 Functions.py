@@ -39,3 +39,19 @@ def describe_city(city, country='France'):
 describe_city('Paris')
 describe_city('reykjavik', 'iceland')
 describe_city('Cannes')
+
+#8-6 City names
+def city_country(city, country):
+    """return a city and a coutry"""
+    return (city.title() + ", " + country.title())
+
+city = city_country('Paris', 'France')
+print(city)
+
+city = city_country('London', 'England')
+print(city)
+
+city = city_country('Berlin', 'Germany')
+print(city)
+
+    

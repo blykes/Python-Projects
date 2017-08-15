@@ -54,4 +54,70 @@ print(city)
 city = city_country('Berlin', 'Germany')
 print(city)
 
-    
+#8-7
+def make_album(artist, title):
+    """Build a dictionary containing information about an album."""
+    album_dict = {
+        'artist': artist.title(),
+        'title': title.title(),
+        }
+    return album_dict
+
+album = make_album('metallica', 'master of pupptes')
+print(album)
+album = make_album('social distortion', 'white heat, white light, white trash')
+print(album)
+album = make_album('halestorm', 'the strange case of')
+print(album)
+
+#8-7b
+def make_album(artist, title, tracks=0):
+    """Build a dictionary containing information about an album."""
+    album_dict = {
+        'artist': artist.title(),
+        'title': title.title(),
+        }
+    if tracks:
+        album_dict['tracks'] = tracks
+    return album_dict
+
+album = make_album('metallica', 'master of pupptes')
+print(album)
+album = make_album('social distortion', 'white heat, white light, white trash')
+print(album)
+album = make_album('halestorm', 'the strange case of')
+print(album)
+album = make_album('megadeth', 'rust in peace', tracks = 8)
+print(album)
+
+#8-8 User Albums
+def make_album(artist, title, tracks=0):
+    """Build a dictionary containing information about an album."""
+    album_dict = {
+        'artist': artist.title(),
+        'title': title.title(),
+        }
+    if tracks:
+        album_dict['tracks'] = tracks
+    return album_dict
+
+#prepare prompts
+title_prompt = "\nWhat album are you listening to? "
+artist_prompt = "\nWho is it by? "
+
+#escape clause
+print("Enter quit at any time to stop. ")
+
+while True:
+    title = input(title_prompt)
+    if title == 'quit':
+        break
+
+    artist = input(artist_prompt)
+    if artist == 'quit':
+        break
+
+    album = make_album(artist, title)
+    print(album)
+
+print("\nThanks for playing!")

@@ -192,11 +192,63 @@ show_magicians(great_magicians)
 print("\nOriginal magicians:")
 show_magicians(magicians)
 
+#8-12 Sandwiches
+def make_sandwich(*items):
+    """make a sandwioch with given items"""
+    print("\nI'll make you a great sandwich:")
+    for item in items:
+        print("  ...adding " + item + " to your sandwich.")
+    print("Your sandwich is ready!")
+
+make_sandwich('roast beef', 'cheddar cheese', 'lettuce', 'honey dijon')
+make_sandwich('turkey', 'apple slices', 'honey mustard')
+make_sandwich('peanut butter', 'strawberry jam')
+
+#8-13 User profile pg 153
+def build_profile(first, last, **user_info):
+    profile = {}
+    profile['first_name'] = first.title()
+    profile['last_name'] = last.title()
+    for key, value in user_info.items():
+        profile[key] = value
+    return profile
+
+user_profile = build_profile('brian', 'lykes',
+                             location =  'NYC',
+                             field = 'CS')
+
+print(user_profile)
+
+#8-14 Cars
+def make_car(manufacturer, model, **options):
+    """Make a dictionary representing a car."""
+    car_dict = {
+        'manufacturer': manufacturer.title(),
+        'model': model.title(),
+        }
+    for option, value in options.items():
+        car_dict[option] = value
+
+    return car_dict
+
+my_outback = make_car('subaru', 'outback', color='blue', tow_package=True)
+print(my_outback)
+
+my_accord = make_car('honda', 'accord', year=1991, color='white',
+        headlights='popup')
+print(my_accord)
+
+#8-15 Printing Models
+import printing_functions as pf
+
+unprinted_designs = ['iphone case', 'robot pendant', 'dodecahedron']
+completed_models = []
+
+pf.print_models(unprinted_designs, completed_models)
+pf.show_completed_models(completed_models)
 
 
-
-
-
+    
 
 
 

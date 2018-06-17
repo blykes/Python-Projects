@@ -1,10 +1,11 @@
 #import modules
-#import sys removed as no longer needed in main file. Imported via game_functions
+
 import pygame
-import game_functions as gf
+
 
 from settings import Settings
 from ship import Ship
+import game_functions as gf
 
 #main function for running game
 def run_game():
@@ -25,7 +26,9 @@ def run_game():
     #Start main loop for game
     while True:
     	gf.check_events(ship)
-    	gf.update.screen(ai_settings, screen, ship)
+    	ship.update()
+    	
+    	gf.update_screen(ai_settings, screen, ship)
 
 run_game()
 

@@ -1,8 +1,10 @@
 #import modules
-import sys
+#import sys removed as no longer needed in main file. Imported via game_functions
 import pygame
+import game_functions as gf
 
-from settings import settings
+from settings import Settings
+from ship import Ship
 
 #main function for running game
 def run_game():
@@ -10,27 +12,20 @@ def run_game():
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode(
-        (ai_settings.screenwidth, ai_settings.screenheight))
-    pygame.display.set_caption("Alien Invasion")
+        (ai_settings.screen_width, ai_settings.screen_height))
+    pygame.display.set_caption("Space Invasion")
 
     #set color
     bg_color = (230, 230, 230)
     
+    #Make a ship
+    ship = Ship(ai_settings, screen)
+    
 
     #Start main loop for game
     while True:
-
-        #Watch for keyboard andmouse events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        #Redraw scree with each pass through the loop
-            screen.fill.(ai_settings.bg_color)
-            
-
-        #Make most recently drawn screen visible
-        pygame.display.flip()
+    	gf.check_events(ship)
+    	gf.update.screen(ai_settings, screen, ship)
 
 run_game()
 

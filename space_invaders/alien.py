@@ -6,7 +6,7 @@ class Alien(Sprite):
     def __init__(self, ai_settings, screen):
         super(Alien, self).__init__()
         self.screen = screen
-        self.ai_settingd = ai_settings
+        #self.ai_settings = ai_settings
 
         #Load tha alien image
         self.image = pygame.image.load('images/alien.bmp')

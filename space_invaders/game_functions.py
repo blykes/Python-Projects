@@ -51,7 +51,7 @@ def update_bullets(bullets):
             bullets.remove(bullet)
         
 			
-def update_screen(ai_settings, screen, ship, bullets):
+def update_screen(ai_settings, screen, ship, aliens, bullets):
     """Update images on the screen and flip to the new screen."""
     # Redraw the screen during each pass through the loop.
     screen.fill(ai_settings.bg_color)
@@ -60,7 +60,26 @@ def update_screen(ai_settings, screen, ship, bullets):
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
-    alien.blitme()
+    aliens.draw(screen)
+    #alien.blitme()
     # Make the most recently drawn screen visible.
     pygame.display.flip()
-	
+
+
+def create_fleet(ai_settings, screen, aliens):
+    #create a fleet of aliens
+    #creates an alien to find the number of aliens in a row
+    #spacing equal to one alien width
+
+    alien = Alien(ai_settings, screen)
+    alien_width = alien.rect.width
+    available_space_x = aisettingsd.screen.width - 2 * alien_width #margin
+    number_aliens_x = int(avalilable_space_x / (2*alien_width))
+
+    #create the first row
+    for alien_number in range(number_aliens_x):
+        #create an alien and place it in its row
+        alien = Alien(ai_settings, screen)
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        aliens.add(alien)

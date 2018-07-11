@@ -49,8 +49,21 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+
+def change_fleet_direction(ai_settings, aliens):
+    #drop the fleet and cheange direction
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+    ai_settings.fleet_direction *= -1
+    
         
-			
+def check_fleet_edges(ai_settings, aliens):
+    #checks for edges and responds appropriately
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(ai_settings, aliens)
+            break
+    
 def update_screen(ai_settings, screen, ship, aliens, bullets):
     """Update images on the screen and flip to the new screen."""
     # Redraw the screen during each pass through the loop.
@@ -65,8 +78,9 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     # Make the most recently drawn screen visible.
     pygame.display.flip()
 
-def update_aliens(aliens):
-    #update the position of all aliens in fleet
+def update_aliens(ai_settings, aliens):
+    #check for edge and update the position of all aliens in fleet
+    check_fleet_edges(ai_settings, aliens)
     aliens.update()
 
 def get_number_aliens_x(ai_settings, alien_width):

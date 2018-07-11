@@ -65,6 +65,10 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     # Make the most recently drawn screen visible.
     pygame.display.flip()
 
+def update_aliens(aliens):
+    #update the position of all aliens in fleet
+    aliens.update()
+
 def get_number_aliens_x(ai_settings, alien_width):
     #determines number of aliens that fit in a row
     available_space_x = ai_settings.screen.width - 2 * alien_width #margin
@@ -91,7 +95,6 @@ def create_fleet(ai_settings, screen, ship, aliens):
     #create a fleet of aliens
     #creates an alien to find the number of aliens in a row
     #spacing equal to one alien width
-
     alien = Alien(ai_settings, screen)
     number_aliens_x = get_number_aliens_x(ai_settings, alien.rect.width)
     number_rows = get_number_rows(ai_settings, ship.rect.height,

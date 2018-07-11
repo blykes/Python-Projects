@@ -23,3 +23,7 @@ class Alien(Sprite):
         #Draw Alien at current location
         self.screen.blit(self.image, self.rect)
         
+    def update(self):
+        #move alien right
+        self.x += self.ai_settings.alien_speeed_factor
+        self.rect.x = self.x

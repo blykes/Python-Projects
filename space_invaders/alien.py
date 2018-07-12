@@ -1,12 +1,14 @@
 import pygame
 from pyagme.sprite import Sprite
 
-# Class represents alien fleet 
 class Alien(Sprite):
+# Class represents alien fleet 
+
     def __init__(self, ai_settings, screen):
+    #initialize the alien and set starting position
         super(Alien, self).__init__()
         self.screen = screen
-        #self.ai_settings = ai_settings
+        self.ai_settings = ai_settings
 
         #Load tha alien image
         self.image = pygame.image.load('images/alien.bmp')
@@ -18,17 +20,7 @@ class Alien(Sprite):
 
         #Store the alien's exact psotion
         self.x = float(self.rect.x)
-
-    def blitme(self):
-        #Draw Alien at current location
-        self.screen.blit(self.image, self.rect)
         
-    def update(self):
-        #move alien right or left 
-        #move alien right or left
-        self.x += (self.ai_settings.alien_speed_factor *
-                      self.ai_settings.fleet_direction)
-        self.rect.x = self.x
     def check_edges (self):
     #return true if alien is at edge of screen
         screen_rect = self.screen.get_rect()
@@ -36,6 +28,14 @@ class Alien(Sprite):
             return True
         elif self.rect.left <=0:
             return True
-
+            
     def update(self):
+        #move alien right or left 
+        self.x += (self.ai_settings.alien_speed_factor *
+                      self.ai_settings.fleet_direction)
+        self.rect.x = self.x
+
+    def blitme(self):
+        #Draw Alien at current location
+        self.screen.blit(self.image, self.rect)
         

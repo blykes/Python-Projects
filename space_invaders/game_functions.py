@@ -94,6 +94,10 @@ def update_aliens(ai_settings, aliens):
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
 
+    #Check for alien/ship collisions
+    if pygame.sprite.spritecollideany(ship, aliens):
+        print("Ship hit!")
+
 def get_number_aliens_x(ai_settings, alien_width):
     #determines number of aliens that fit in a row
     available_space_x = ai_settings.screen.width - 2 * alien_width #margin

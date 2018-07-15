@@ -3,9 +3,8 @@ import pygame
 
 from bullet import Bullet
 
-# Respond to key press events
+#Respond to key press events
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
-    """Respond to keypresses."""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
@@ -15,8 +14,8 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_q:
         sys.exit()
 
-# Create new bullet and add it to group
-# create a new bullet and fire if limit not yet reached
+#Create new bullet and add it to group
+#Create a new bullet and fire if limit not yet reached
 def fire_bullet(ai_settings, screen, ship, bullets):
     if len(bullets) < ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
@@ -24,7 +23,7 @@ def fire_bullet(ai_settings, screen, ship, bullets):
 
 # Respond to key release events 
 def check_keyup_events(event, ship):
-    """Respond to key releases."""
+    #Response to key releases
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
@@ -42,8 +41,7 @@ def check_events(ai_settings, screen, ship, bullets):
             
 #Update position of bullets and and remove old ones
 def update_bullets(bullets):
-    """Update position of bullets and get rid of old bullets."""
-    # Update bullet positions.
+    #Update bullet positions.
     bullets.update()
     # Get rid of bullets that have disappeared.
     for bullet in bullets.copy():
@@ -65,8 +63,8 @@ def check_fleet_edges(ai_settings, aliens):
             break
     
 def update_screen(ai_settings, screen, ship, aliens, bullets):
-    """Update images on the screen and flip to the new screen."""
-    # Redraw the screen during each pass through the loop.
+    #Updates images on the screen and flip to new screen
+    #Redraw the screen during each pass through the loop.
     screen.fill(ai_settings.bg_color)
     
     # Redraw all bullets behind ship and aliens.
@@ -75,7 +73,7 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     ship.blitme()
     aliens.draw(screen)
     #alien.blitme()
-    # Make the most recently drawn screen visible.
+    #Make the most recently drawn screen visible.
     pygame.display.flip()
 
 def update_aliens(ai_settings, aliens):

@@ -1,6 +1,7 @@
 import sys
 import pygame
 
+
 from bullet import Bullet
 
 #Respond to key press events
@@ -40,13 +41,25 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
             
 #Update position of bullets and and remove old ones
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     #Update bullet positions.
     bullets.update()
+    
     # Get rid of bullets that have disappeared.
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    #Check for bullets that have hit aliens
+    #Get rid of both bullet and alien
+    collisions = pygame.sprite.groupcollide(bullets, a;iens, True, True)
+
+    #destroy existing bullets and create new fleet
+    if len(aliens) ==0:
+        bullets.empty()
+        createfleet(ai_settings, screen, ship, aliens)
+    
+
+    #check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
 
 def change_fleet_direction(ai_settings, aliens):
     #drop the fleet and cheange direction
@@ -115,6 +128,5 @@ def create_fleet(ai_settings, screen, ship, aliens):
     #create the fleet
     for row_number in range(number_rows):
         for alien_number in range(number_aliens_x):
-        #create an alien and place it in its row
             create_alien(ai_settings, screen, aliens, alien_number,
                 row_number)

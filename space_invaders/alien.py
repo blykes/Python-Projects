@@ -1,5 +1,5 @@
 import pygame
-from pyagme.sprite import Sprite
+from pygame.sprite import Sprite
 
 class Alien(Sprite):
 # Class represents alien fleet 
@@ -12,7 +12,7 @@ class Alien(Sprite):
 
         #Load tha alien image
         self.image = pygame.image.load('images/alien.bmp')
-        self.rect = self.image_rect()
+        self.rect = self.image.get_rect()
 
         #Starts each alien at the top of the screen
         self.rect.x = self.rect.width

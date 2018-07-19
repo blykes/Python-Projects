@@ -39,8 +39,26 @@ def check_events(ai_settings, screen, ship, bullets):
 
 #Starts new game when play button is clicked
 def check_play_button(stats, play_button, mouse_x, mouse_y):
-    if play_button.rect.collidepoint(mouse_x, mouse_y):
+    #starte new game when plyer clicks play
+    button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
+    if button_clicked and not stats.game_active:
+        #Reset game settings
+        ai_settings.initialize_dynamic_settings()
+
+        #Hide cursor
+        pygame.mouse.set_visible(False)
+        
+        #Reset game stats
+        stats.reset_stats()
         stats.game_active = True
+
+        #Empty Lists of bullets and aliens
+        aliens.empty()
+        bullets.empty()
+
+        #Create new fleet and center ship
+        create_fleet(ai_settings, screen, ship, aliens)
+        ship.center_ship()
     
 # Create new bullet, add it to group, and fire if limit not yet reached            
 def fire_bullet(ai_settings, screen, ship, bullets):
@@ -107,6 +125,7 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
         stats.ships_left -= 1
     else:
         stats.game_active = False
+        pygame.mouse.set_visible(True)
     
     #Empty lists of aliens and bullets
     aliens.empty()

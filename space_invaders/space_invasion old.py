@@ -1,7 +1,8 @@
-#Import madules
-import pygame
-from pygame.sprite import Group
+#import modules
 
+import pygame
+
+from pygame.sprite import Group
 from settings import Settings
 from game_stats import GameStats
 from scoreboard import Scoreboard
@@ -11,32 +12,32 @@ import game_functions as gf
 
 #main function for running game
 def run_game():
-    #Init game and create object
+    #init game and create object
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode(
-        (ai_settings.screen_width, ai_settings.screen_height))
+            (ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Space Invasion")
-    
+
     #Make "play" button
     play_button = Button(ai_settings, screen, "Play")
-    
-    #Create stat tracking instance
+
+    #Create stats tracking
     stats = GameStats(ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
-    
-    #Set color
+
+    #set color
     bg_color = (230, 230, 230)
     
     #Make a ship
     ship = Ship(ai_settings, screen)
-
-    #Make bullets
+    
+    # Make a group to store bullets
     bullets = Group()
 
-    #Make Aliens
+    #Make a group of aliens
     aliens = Group()
-    
+
     #Creates Alien fleet
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
